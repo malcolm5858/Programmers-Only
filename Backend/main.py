@@ -121,7 +121,8 @@ def findUser():
                     if userGender == readerGender:
                         userImage = user['Picture']
                         userBio = user['Bio']
-                        return jsonify({'Bio':userBio, 'Picture':userImage})
+                        return jsonify({'Bio': userBio, 'Picture': userImage})
+
 
 def createUser(name, username, password, bio, gender, interest, link):
     count = 1
@@ -132,8 +133,13 @@ def createUser(name, username, password, bio, gender, interest, link):
     password = sha256_crypt.encrypt(password)
     img = addUser(link)
     newUser = {'ID': ID, 'Name': name, 'Gender': gender, 'Interest': interest, 'Bio': bio,
-               'Picture': img, 'Password': password, 'Matches': [], 'NotMatches':[], 'Username': username}
+               'Picture': img, 'Password': password, 'Matches': [], 'NotMatches': [], 'Username': username}
     users.insert(newUser)
+
+
+@main.route('/getURl', methods=['POST'])
+def PostCreateUser():
+
 
 def match(iid):
     user = users.find_one({'ID': ID})
@@ -141,11 +147,13 @@ def match(iid):
     users.update_one(user, userMatches)
     return findUser
 
+
 def notMatch(iid):
     user = users.find_one({'ID': ID})
     userNotMatches = user['NotMatches'] + iid
     users.update_one(user, userNotMatches)
     return findUser
+
 
 def sendName(iid):
     user = users.find_one({'ID': iid})

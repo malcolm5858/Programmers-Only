@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function SideMenu() {
+function SideMenu(props) {
   const classes = useStyles();
   return (
     <Drawer
@@ -37,7 +37,7 @@ function SideMenu() {
       <Grid container direction="row" justify="center" alignItems="center">
         <Avatar src={ProfilePic} className={classes.bigAvatar}></Avatar>
         <Typography variant="h5" className={classes.name}>
-          Name
+          {props.Name}
         </Typography>
       </Grid>
     </Drawer>

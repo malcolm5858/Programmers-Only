@@ -8,7 +8,8 @@ import {
   FormControlLabel,
   FormLabel,
   FormGroup,
-  Checkbox
+  Checkbox,
+  Link
 } from "@material-ui/core";
 class Signup extends React.Component {
   constructor(props) {
@@ -26,10 +27,6 @@ class Signup extends React.Component {
     this.handleTextBox = this.handleTextBox.bind(this);
     this.handleRadioButtons = this.handleRadioButtons.bind(this);
     this.handleCheckBoxes = this.handleCheckBoxes.bind(this);
-  }
-
-  handleSubmit(event) {
-    console.log(this.state);
   }
 
   handleTextBox(event) {
@@ -188,7 +185,23 @@ class Signup extends React.Component {
               onChange={this.handleTextBox}
               multiline
             />
-            <Button onClick={this.handleSubmit}>Submit</Button>
+            <Button
+              onClick={async () => {
+                const data = this.state;
+                const response = await fetch("", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify(data)
+                });
+
+                response.json().then(data => {
+                  window.location.assign("/{data.id}");
+                });
+              }}>
+              Submit
+            </Button>
           </Grid>
         </form>
       </div>
