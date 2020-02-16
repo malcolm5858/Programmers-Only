@@ -9,7 +9,7 @@ Headers
 {
     "grant_type": "refresh_token",
     "client_id": "8DEv1AMNXczW3y4U15LL3jYf62jK93n5",
-    "refresh_token": "Xa_238Zt5ZGss2RzhxInG0V2Nqj0Zh6avMj__C9dCn1-Z"
+    "refresh_token": "IvCJfS2ka_MSscoKuOY-7qik167euQ-VHWKQtW3pb43F1"
 }
 
 
@@ -17,7 +17,7 @@ Headers
 
 Get Process Key: This is a GET Request run after authenticating that gives you the identifying key for the process. The "value" field will be a list. Take the first element of that list and find the value of the "Key" attribute and save it. Substitute it into [ProcessKey] in all future requests.
 
-https://platform.uipath.com/iitissuxlz/IITDefaultym3f337016/odata/Releases?$filter=%20Name%20eq%20'ProgrammersOnly'
+https://platform.uipath.com/iitissuxlz/IITDefaultym3f337016/odata/Releases
 
 Headers
   Authorization: Bearer [access_token]
