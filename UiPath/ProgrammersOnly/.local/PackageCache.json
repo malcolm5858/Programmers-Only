@@ -10,10 +10,10 @@
         "C:\\Users\\Adrian\\.nuget\\packages\\csvhelper/2.13.5\\lib/net40-client/CsvHelper.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\documentformat.openxml/2.5.0\\lib/DocumentFormat.OpenXml.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\microsoft.visualstudio.ole.interop/7.10.6071\\lib/Microsoft.VisualStudio.OLE.Interop.dll",
-        "C:\\Users\\Adrian\\.nuget\\packages\\npoi/2.4.1\\lib/net45/NPOI.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\npoi/2.4.1\\lib/net45/NPOI.OOXML.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\npoi/2.4.1\\lib/net45/NPOI.OpenXml4Net.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\npoi/2.4.1\\lib/net45/NPOI.OpenXmlFormats.dll",
+        "C:\\Users\\Adrian\\.nuget\\packages\\npoi/2.4.1\\lib/net45/NPOI.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\sharpziplib/1.0.0\\lib/net45/ICSharpCode.SharpZipLib.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\uipath.excel.activities/2.8.0-preview\\lib/net461/UiPath.Excel.Activities.Design.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\uipath.excel.activities/2.8.0-preview\\lib/net461/UiPath.Excel.Activities.dll",
@@ -69,10 +69,10 @@
       },
       "Assemblies": [
         "C:\\Users\\Adrian\\.nuget\\packages\\avalonedit/5.0.3\\lib/Net40/ICSharpCode.AvalonEdit.dll",
-        "C:\\Users\\Adrian\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.AvalonDock.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.AvalonDock.Themes.Aero.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll",
+        "C:\\Users\\Adrian\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.AvalonDock.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.DataGrid.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\extended.wpf.toolkit/2.8.0\\lib/net40/Xceed.Wpf.Toolkit.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\humanizer.core/2.4.2\\lib/netstandard2.0/Humanizer.dll",
@@ -98,11 +98,11 @@
         "C:\\Users\\Adrian\\.nuget\\packages\\uipath.uiautomation.activities/19.12.0-preview\\lib/net461/UiPath.Wizards.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\uipath.vision/2.0.0\\lib/net452/UiPath.Vision.AzureComputerVision.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\uipath.vision/2.0.0\\lib/net452/UiPath.Vision.Core.dll",
-        "C:\\Users\\Adrian\\.nuget\\packages\\uipath.vision/2.0.0\\lib/net452/UiPath.Vision.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\uipath.vision/2.0.0\\lib/net452/UiPath.Vision.GoogleCloud.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\uipath.vision/2.0.0\\lib/net452/UiPath.Vision.Microsoft.dll",
         "C:\\Users\\Adrian\\.nuget\\packages\\uipath.vision/2.0.0\\lib/net452/UiPath.Vision.MicrosoftCloud.dll",
-        "C:\\Users\\Adrian\\.nuget\\packages\\uipath.vision/2.0.0\\lib/net452/UiPath.Vision.Tesseract.dll"
+        "C:\\Users\\Adrian\\.nuget\\packages\\uipath.vision/2.0.0\\lib/net452/UiPath.Vision.Tesseract.dll",
+        "C:\\Users\\Adrian\\.nuget\\packages\\uipath.vision/2.0.0\\lib/net452/UiPath.Vision.dll"
       ]
     }
   ],
