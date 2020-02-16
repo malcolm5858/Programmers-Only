@@ -1,0 +1,57 @@
+Authentication HTTP Request: This is a POST request run initially to get a token for use later. Take the item in the "access_token" field and substitue it in for [access_token] in all future requests.
+
+https://account.uipath.com/oauth/token
+
+Headers
+	Content-Type: application/json
+	X-UIPATH-TenantName: IITDefaultym3f337016
+
+{
+    "grant_type": "refresh_token",
+    "client_id": "8DEv1AMNXczW3y4U15LL3jYf62jK93n5",
+    "refresh_token": "Xa_238Zt5ZGss2RzhxInG0V2Nqj0Zh6avMj__C9dCn1-Z"
+}
+
+
+
+
+Get Process Key: This is a GET Request run after authenticating that gives you the identifying key for the process. The "value" field will be a list. Take the first element of that list and find the value of the "Key" attribute and save it. Substitute it into [ProcessKey] in all future requests.
+
+https://platform.uipath.com/iitissuxlz/IITDefaultym3f337016/odata/Releases?$filter=%20Name%20eq%20'ProgrammersOnly'
+
+Headers
+  Authorization: Bearer [access_token]
+  X-UIPATH-TenantName: IITDefaultym3f337016
+
+
+
+
+
+Sending URL: This is the POST request to use for sending the URL to UiPath to begin automation. Substitute the url into the [URL] field. The "value" field will be a list. Take the first element of that list and find the value of the "Key" attribute and save it. This will help you identify the output later.
+
+https://platform.uipath.com/iitissuxlz/IITDefaultym3f337016/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs
+
+Headers
+  Content-Type: application/json
+  X-UIPATH-TenantName: IITDefaultym3f337016
+
+{
+  "startInfo": {
+    "ReleaseKey": "[ProcessKey]",
+    "Strategy": "All",
+    "RobotIds": [],
+    "NoOfRobots": 0
+    "InputArguments": "{\"CodeURL\":\"[URL]\"}"
+  }
+}
+
+
+
+
+Get Screenshot: This is a GET request that will got the screenshot back after the automation has completed. You have to be sure the automation has completed before returning the output of this, so it is recommended to delay by 6-8 seconds between the previous request and this one. The "value" field will be a list. Take the first element of that list and compare the value of the "Key" attribute to the key you found in the post request earlier. If it doesn't match, move to the next item in the list. Once you find the correct item in the list, you need its "OutputArguments" attribute. That will look like this: "{\"Screenshot\":\"[Screenshot]\"}" where [Screenshot] is the data you need.
+
+https://platform.uipath.com/iitissuxlz/IITDefaultym3f337016/odata/Jobs?$orderby=CreationTime desc
+
+Headers
+  Authorization: Bearer [access_token]
+  X-UIPATH-TenantName: IITDefaultym3f337016
