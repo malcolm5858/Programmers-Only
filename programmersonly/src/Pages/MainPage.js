@@ -11,7 +11,27 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function MainPage() {
+function MainPage({ match, location }) {
+  const {
+    params: { userId }
+  } = match;
+  const dataUserName = null;
+  const dataOtherUser = null;
+  React.useEffect(() => {
+    fetch("/getUserName").then(response =>
+      response.json().then(data => {
+        dataUserName = data;
+      })
+    );
+  });
+  React.useEffect(() => {
+    fetch("/findUser").then(response =>
+      response.json().then(data => {
+        dataOtherUser = data;
+      })
+    );
+  });
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
