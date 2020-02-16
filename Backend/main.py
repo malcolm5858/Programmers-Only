@@ -119,8 +119,9 @@ def findUser():
                 userInterest = user['Interest']
                 for userGender in userInterest:
                     if userGender == readerGender:
-                        return jsonify(user)
-
+                        userImage = user['Picture']
+                        userBio = user['Bio']
+                        return jsonify({'Bio':userBio, 'Picture':userImage})
 
 def createUser(name, username, password, bio, gender, interest, link):
     count = 1
@@ -138,13 +139,13 @@ def match(iid):
     user = users.find_one({'ID': ID})
     userMatches = user['Matches'] + iid
     users.update_one(user, userMatches)
-    #return findUser
+    return findUser
 
 def notMatch(iid):
     user = users.find_one({'ID': ID})
     userNotMatches = user['NotMatches'] + iid
     users.update_one(user, userNotMatches)
-    #return findUser
+    return findUser
 
 def sendName(iid):
     user = users.find_one({'ID': iid})
