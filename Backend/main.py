@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from .extentions import mongo
 from pymongo import MongoClient
 from passlib.hash import sha256_crypt
@@ -15,7 +15,7 @@ headers = {'Content-Type': 'application/json',
            'X-UIPATH-TenantName': 'IITDefaultym3f337016'}
 payload = {"grant_type": "refresh_token",
            "client_id": "8DEv1AMNXczW3y4U15LL3jYf62jK93n5",
-           "refresh_token": "IvCJfS2ka_MSscoKuOY-7qik167euQ-VHWKQtW3pb43F1"}
+           "refresh_token": "Rk-63zvkTn68N27Sse0TEMhEKrQEh4N_bhGg2rC-a8dZO"}
 url = "https://account.uipath.com/oauth/token"
 
 r = requests.post(url, headers=headers, json=payload)
@@ -66,26 +66,25 @@ def addUser(url):
             print("None")
         else:
             print("got the img")
-            image = r.json.get("value")[i].get("OutputArguments")[18:-3]
+            image = r.json().get("value")[i].get("OutputArguments")[18:-3]
             go = False
 
-    if image:
-        print("we have image")
+    return image
 
 
 @main.route('/getURl', methods=['POST'])
 def getUrl():
     urlFromFrontEnd = request.get_json()
     print(urlFromFrontEnd)
-    return 'Done', 201
+    img = addUser(urlFromFrontEnd)
+    return jsonify({'string': img}), 200
 
 
 @main.route('/')
 def index():
     db = client.Users
     users = db.UserData
-    users.insert({'ID': 0, 'Name': 'Alex', 'Gender': 'Male', 'Interest': ['Male'],
-                  'Bio': "Find some time to do something", 'Code': "Picture", 'Password': "Password", 'Matches': [1, 2, 3], 'Username': 'Axelman03'})
+    users.insert({'ID': 0, 'Name': 'Alex', 'Gender': 'Male', 'Interest': ['Male'],'Bio': "Find some time to do something", 'Code': "Picture", 'Password': "Password", 'Matches': [1, 2, 3], 'Username': 'Axelman03'})
     return '<h1>Added a user!</h1>'
 
 
@@ -104,17 +103,15 @@ def auth():
 
 @main.route('/findUser')
 def findUser():
-    return jsonify({'int': 5})
-# def findUser():
-#     reader = users.find_one({'ID': ID})
-#     readerInterest = reader['Interest']
-#     readerGender = reader['Gender']
-#     for genders in readerInterst:
-#         for user in users.find({'Gender': genders}):
-#             userInterest = user['Interest']
-#             for userGender in userInterest:
-#                 if userGender == readerGender:
-#                     return jsonify(user)
+    reader = users.find_one({'ID': ID})
+    readerInterest = reader['Interest']
+    readerGender = reader['Gender']
+    for genders in readerInterst:
+        for user in users.find({'Gender': genders}):
+            userInterest = user['Interest']
+            for userGender in userInterest:
+                if userGender == readerGender:
+                    return jsonify(user)
 
 
 def createUser(name, username, password, bio, gender, interest):

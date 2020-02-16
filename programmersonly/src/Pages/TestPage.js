@@ -8,7 +8,7 @@ function TestPage() {
         onClick={async () => {
           const url =
             "https://github.com/malcolm5858/Lab-1-cs-430/blob/master/Gui.java";
-          const response = await fetch("", {
+          const response = await fetch("/getURl", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -16,9 +16,10 @@ function TestPage() {
             body: JSON.stringify(url)
           });
 
-          if (response.ok) {
-            console.log("response worked");
-          }
+          response.json().then(data => {
+            console.log(data);
+          })
+          
         }}>
         Button
       </Button>
