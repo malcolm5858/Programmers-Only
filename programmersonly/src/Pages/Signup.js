@@ -187,7 +187,7 @@ class Signup extends React.Component {
             <Button
               onClick={async () => {
                 const data = this.state;
-                const response = await fetch("", {
+                const response = await fetch("/getId", {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json"
@@ -196,6 +196,7 @@ class Signup extends React.Component {
                 });
 
                 response.json().then(data => {
+                  console.log("SHOULDNOTBEHERE");
                   window.location.assign("/{data.id}");
                 });
               }}>

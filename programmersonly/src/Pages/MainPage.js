@@ -24,18 +24,22 @@ function MainPage({ match, location }) {
     params: { userId }
   } = match;
   React.useEffect(() => {
+    fetch("/findUser").then(response =>
+      response.json().then(data => {
+        console.log("test");
+        setOtherUserData(data);
+      })
+    );
     fetch("/getName").then(response =>
       response.json().then(data => {
+        console.log("test");
         setUserData(data);
+        
       })
     );
   });
   React.useEffect(() => {
-    fetch("/findUser").then(response =>
-      response.json().then(data => {
-        setOtherUserData(data);
-      })
-    );
+    
   });
 
   const classes = useStyles();
@@ -63,6 +67,7 @@ function MainPage({ match, location }) {
               });
 
               response.json().then(data => {
+                console.log("SHOULDNOTBEHERE")
                 window.location.assign("/{data.id}");
               });
             }}>
@@ -81,6 +86,7 @@ function MainPage({ match, location }) {
               });
 
               response.json().then(data => {
+                console.log("SHOULDNOTBEHERE");
                 window.location.assign("/{data.id}");
               });
             }}>

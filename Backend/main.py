@@ -103,25 +103,25 @@ def auth():
 def findUser():
     beenSeen = False
     reader = users.find_one({'ID': ID})
-    readerInterest = reader['Interest']
-    readerGender = reader['Gender']
-    readerMatches = reader['Matches']
-    readerDismatches = reader['NotMatches']
-    for genders in readerInterst:
+    readerInterest = reader.get('Interest')
+    readerGender = reader.get('Gender')
+    readerMatches = reader.get('Matches')
+    readerDismatches = reader.get('NotMatches')
+    for genders in readerInterest:
         for user in users.find({'Gender': genders}):
             for match in readerMatches:
-                if user['ID'] == match:
+                if user.get('ID') == match:
                     beenSeen = True
             for dismatch in readerDismatches:
-                if user['ID'] == dismatch:
+                if user.get('ID') == dismatch:
                     beenSeen = True
             if beenSeen == False:
-                userInterest = user['Interest']
+                userInterest = user.get('Interest')
                 for userGender in userInterest:
                     if userGender == readerGender:
-                        userImage = user['Picture']
-                        userBio = user['Bio']
-                        return jsonify({'Bio': userBio, 'img': userImage, 'id', user['ID']})
+                        userImage = user.get('Picture')
+                        userBio = user.get('Bio')
+                        return jsonify({'Bio': userBio, 'img': userImage, 'id': user.get('ID')})
 
 
 def createUser(name, username, password, bio, gender, interest, link):
@@ -129,27 +129,27 @@ def createUser(name, username, password, bio, gender, interest, link):
     for user in users.find():
         count += 1
 
-    ID = count
+    iid = count
     password = sha256_crypt.encrypt(password)
     img = addUser(link)
-    newUser = {'ID': ID, 'Name': name, 'Gender': gender, 'Interest': interest, 'Bio': bio,
+    newUser = {'ID': iid,'Name': name, 'Gender': gender, 'Interest': interest, 'Bio': bio,
                'Picture': img, 'Password': password, 'Matches': [], 'NotMatches': [], 'Username': username}
     users.insert(newUser)
     
-    global ID = ID
-    
+    global ID
+    ID = iid
     return ID
 
 
 @main.route('/getId', methods=['POST'])
 def PostCreateUser():
     userData = request.get_json()
-    id = createUser(userData.get("FirstName"), userData.get("Username"), userData.get("Password"), userData.get("Bio"), userData.get("Gender"), userData.get("LookFor"), userData.get("LinktoCode"));
-    return jsonify({'id', id}), 200
+    id = createUser(userData.get("FirstName"), userData.get("Username"), userData.get("Password"), userData.get("Bio"), userData.get("Gender"), userData.get("LookFor"), userData.get("LinktoCode"))
+    return jsonify({'id': id}), 200
 
 @main.route('/getName')
 def GetCurrentUserName():
-    return jsonify({'name', sendName(ID)})
+    return jsonify({'name': sendName(ID)})
 
 @main.route('/yesNo', methods=['POST'])
 def matchRequest():
@@ -164,21 +164,21 @@ def matchRequest():
 
 def match(iid):
     user = users.find_one({'ID': ID})
-    userMatches = user['Matches'] + iid
+    userMatches = user.get('Matches') + iid
     users.update_one(user, userMatches)
     return findUser
 
 
 def notMatch(iid):
     user = users.find_one({'ID': ID})
-    userNotMatches = user['NotMatches'] + iid
+    userNotMatches = user.get('NotMatches') + iid
     users.update_one(user, userNotMatches)
     return findUser
 
 
 def sendName(iid):
     user = users.find_one({'ID': iid})
-    name = user['Name']
+    name = user.get('Name')
     return name
 
 
