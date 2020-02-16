@@ -23,7 +23,6 @@ class Signup extends React.Component {
       LinktoCode: "",
       Bio: ""
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTextBox = this.handleTextBox.bind(this);
     this.handleRadioButtons = this.handleRadioButtons.bind(this);
     this.handleCheckBoxes = this.handleCheckBoxes.bind(this);
