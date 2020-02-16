@@ -101,12 +101,14 @@ def auth():
 
 @main.route('/findUser')
 def findUser():
+    print("NONONO")
     beenSeen = False
     reader = users.find_one({'ID': ID})
     readerInterest = reader.get('Interest')
     readerGender = reader.get('Gender')
     readerMatches = reader.get('Matches')
     readerDismatches = reader.get('NotMatches')
+    readerName = reader.get('Name')
     for genders in readerInterest:
         for user in users.find({'Gender': genders}):
             for match in readerMatches:
@@ -121,7 +123,8 @@ def findUser():
                     if userGender == readerGender:
                         userImage = user.get('Picture')
                         userBio = user.get('Bio')
-                        return jsonify({'Bio': userBio, 'img': userImage, 'id': user.get('ID')})
+                        
+                        return jsonify({'Bio': userBio, 'img': userImage, 'id': user.get('ID'), 'name':readerName})
 
 
 def createUser(name, username, password, bio, gender, interest, link):

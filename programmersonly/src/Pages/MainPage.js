@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 
 function getImage(base) {
   var image = new Image();
-  image.src = "data:image/png;base64,${base}";
+  image.src = "../assets/CodePic.png" //"data:image/png;base64,${base}";
   return image;
 }
 
@@ -41,7 +41,7 @@ function MainPage({ match, location }) {
         justify="center"
         alignItems="center"
         style={{ width: "100%", overflowX: "auto" }}>
-        <CodeViewer img={getImage(UserData.img)} />
+        <CodeViewer />
         <div
           style={{ width: "100%", overflowX: "hidden", textAlign: "center" }}>
           <Button

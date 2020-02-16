@@ -1,7 +1,7 @@
 import React from "react";
 import testImg from "../assets/CodePic.png";
 
-function CodeViewer(props) {
+function CodeViewer() {
   return (
     <div
       style={{
@@ -10,7 +10,7 @@ function CodeViewer(props) {
         width: "100%",
         overflowX: "hidden"
       }}>
-      <img src={props.img} alt="Img Not Found" />
+      <img src={testImg} alt="Img Not Found" />
     </div>
   );
 }
