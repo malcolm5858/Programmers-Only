@@ -4,7 +4,7 @@ import { Typography } from "@material-ui/core";
 function Bio() {
   return (
     <div>
-      <Typography variant="body1">
+      <Typography variant="body1" style={{ width: "100%", overflowX: "auto" }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet
         ligula non mauris rutrum sagittis. Integer eget sodales ante, semper
         commodo velit. Maecenas congue laoreet neque, in rutrum nibh maximus

@@ -1,29 +1,18 @@
-import React from "react";
-import SideMenu from "./Components/SideMenu";
-import CodeViewer from "./Components/CodeViewer";
-import { makeStyles } from "@material-ui/core/styles";
-import YesNoBar from "./Components/YesNoBar";
-import Bio from "./Components/Bio";
-import { Grid } from "@material-ui/core";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex"
-  }
-}));
+import React, { useEffect } from "react";
+import MainPage from "./Pages/MainPage";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
 
 function App() {
-  const classes = useStyles();
-  return (
-    <div className={classes.root}>
-      <SideMenu />
-      <Grid container direction="column" justify="center" alignItems="center">
-        <CodeViewer />
-        <YesNoBar />
-        <Bio />
-      </Grid>
-    </div>
-  );
+  useEffect(() => {
+    fetch("").then(response =>
+      response.json().then(data => {
+        console.log(data);
+      })
+    );
+  }, []);
+
+  return <Signup />; //<MainPage />;
 }
 
 export default App;
