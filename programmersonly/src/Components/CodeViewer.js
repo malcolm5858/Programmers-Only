@@ -1,5 +1,5 @@
 import React from "react";
-import testImg from "/Users/malcolmmachesky/Documents/UncommonHacks/programmersonly/src/assets/Screen Shot 2020-02-15 at 5.14.23 PM.png";
+import testImg from "../assets/CodePic.png";
 
 function CodeViewer() {
   return (
