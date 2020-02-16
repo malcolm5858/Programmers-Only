@@ -2,17 +2,10 @@ import React, { useEffect } from "react";
 import MainPage from "./Pages/MainPage";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
+import TestPage from "./Pages/TestPage";
 
 function App() {
-  useEffect(() => {
-    fetch("/findUser").then(response =>
-      response.json().then(data => {
-        console.log(data);
-      })
-    );
-  }, []);
-
-  return <Signup />; //<MainPage />;
+  return <TestPage />; //<Signup />; //<MainPage />;
 }
 
 export default App;
