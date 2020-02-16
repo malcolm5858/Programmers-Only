@@ -5,7 +5,7 @@ import Signup from "./Pages/Signup";
 
 function App() {
   useEffect(() => {
-    fetch("").then(response =>
+    fetch("/findUser").then(response =>
       response.json().then(data => {
         console.log(data);
       })
