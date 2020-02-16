@@ -121,7 +121,7 @@ def findUser():
                     if userGender == readerGender:
                         userImage = user['Picture']
                         userBio = user['Bio']
-                        return jsonify({'Bio': userBio, 'img': userImage})
+                        return jsonify({'Bio': userBio, 'img': userImage, 'id', user['ID']})
 
 
 def createUser(name, username, password, bio, gender, interest, link):
@@ -150,6 +150,16 @@ def PostCreateUser():
 @main.route('/getName')
 def GetCurrentUserName():
     return jsonify({'name', sendName(ID)})
+
+@main.route('/yesNo', methods=['POST'])
+def matchRequest():
+    data = request.get_json()
+    if data.get('value'):
+        match(data.get('id'))
+    else:
+        notMatch(data.get('id'))
+    
+    return ID
 
 
 def match(iid):
