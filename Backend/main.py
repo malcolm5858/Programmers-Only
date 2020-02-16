@@ -35,9 +35,9 @@ key=r.json().get("value")[0].get("Key")
 
 
 print("2")
-def addUser():
+def addUser(url):
     print("into function")
-    testUrl = "https://github.com/malcolm5858/Programmers-Only/blob/master/Backend/main.py"
+    testUrl = url
     url = "https://platform.uipath.com/iitissuxlz/IITDefaultym3f337016/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs"
     headers = { 'Content-Type': 'application/json',
         'X-UIPATH-TenantName': 'IITDefaultym3f337016', 'Authorization': 'Bearer ' + token}
@@ -75,8 +75,7 @@ def addUser():
             
         
 
-print("HEre")  
-addUser()
+
 
 
 
