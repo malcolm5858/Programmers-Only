@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 
 function getImage(base) {
   var image = new Image();
-  image.src = "data:image/png;" + base + ",iVBORw...";
+  image.src = "data:image/png;base64,${base}";
   return image;
 }
 
