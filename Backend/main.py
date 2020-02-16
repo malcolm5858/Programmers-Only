@@ -121,7 +121,7 @@ def findUser():
                     if userGender == readerGender:
                         userImage = user['Picture']
                         userBio = user['Bio']
-                        return jsonify({'Bio': userBio, 'Picture': userImage})
+                        return jsonify({'Bio': userBio, 'img': userImage})
 
 
 def createUser(name, username, password, bio, gender, interest, link):
@@ -147,7 +147,9 @@ def PostCreateUser():
     id = createUser(userData.get("FirstName"), userData.get("Username"), userData.get("Password"), userData.get("Bio"), userData.get("Gender"), userData.get("LookFor"), userData.get("LinktoCode"));
     return jsonify({'id', id}), 200
 
-
+@main.route('/getName')
+def GetCurrentUserName():
+    return jsonify({'name', sendName(ID)})
 
 
 def match(iid):
