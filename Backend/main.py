@@ -135,10 +135,16 @@ def createUser(name, username, password, bio, gender, interest, link):
     newUser = {'ID': ID, 'Name': name, 'Gender': gender, 'Interest': interest, 'Bio': bio,
                'Picture': img, 'Password': password, 'Matches': [], 'NotMatches': [], 'Username': username}
     users.insert(newUser)
+    
+    return ID
 
 
 @main.route('/getURl', methods=['POST'])
 def PostCreateUser():
+    userData = request.get_json()
+    id = createUser(userData.get("FirstName"), userData.get("Username"), userData.get("Password"), userData.get("Bio"), userData.get("Gender"), userData.get("LookFor"), userData.get("LinktoCode"));
+    return jsonify({'id', id}), 200
+    
 
 
 def match(iid):
