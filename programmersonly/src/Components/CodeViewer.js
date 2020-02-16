@@ -4,15 +4,15 @@ import testImg from "/Users/malcolmmachesky/Documents/UncommonHacks/programmerso
 
 function CodeViewer() {
   return (
-    <Container fixed>
-      <div>
-        <img
-          src={testImg}
-          alt="Img Not Found"
-          style={{ width: "100%", height: "100%" }}
-        />
-      </div>
-    </Container>
+    <div
+      style={{
+        height: "750px",
+        overflowY: "scroll",
+        width: "100%",
+        overflowX: "hidden"
+      }}>
+      <img src={testImg} alt="Img Not Found" />
+    </div>
   );
 }
 
