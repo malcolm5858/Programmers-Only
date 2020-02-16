@@ -11,6 +11,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+function getImage(base) {
+  var image = new Image();
+  image.src = "data:image/png;" + base + ",iVBORw...";
+  return image;
+}
+
 function MainPage({ match, location }) {
   const [UserData, setUserData] = useState([]);
   const [OtherUserData, setOtherUserData] = useState([]);
@@ -18,7 +24,7 @@ function MainPage({ match, location }) {
     params: { userId }
   } = match;
   React.useEffect(() => {
-    fetch("/getUserName").then(response =>
+    fetch("/getName").then(response =>
       response.json().then(data => {
         setUserData(data);
       })
@@ -42,13 +48,13 @@ function MainPage({ match, location }) {
         justify="center"
         alignItems="center"
         style={{ width: "100%", overflowX: "auto" }}>
-        <CodeViewer img="TEST" />
+        <CodeViewer img={getImage(OtherUserData.img)} />
         <div
           style={{ width: "100%", overflowX: "hidden", textAlign: "center" }}>
           <Button
             onClick={async () => {
-              const data = { value: true };
-              const response = await fetch("", {
+              const data = { value: true, id: OtherUserData.id };
+              const response = await fetch("/yesNo", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json"
@@ -65,8 +71,8 @@ function MainPage({ match, location }) {
           <span></span>
           <Button
             onClick={async () => {
-              const data = { value: false };
-              const response = await fetch("", {
+              const data = { value: false, id: OtherUserData.id };
+              const response = await fetch("/yesNo", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json"
